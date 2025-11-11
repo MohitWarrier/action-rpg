@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://bdm81g1ffafh8"]
+[gd_scene load_steps=8 format=4 uid="uid://bdm81g1ffafh8"]
 
 [ext_resource type="TileSet" uid="uid://bocodjrh6g07b" path="res://Sprites/Tilesets/overworld_tileset.tres" id="1_6jwp1"]
 [ext_resource type="Texture2D" uid="uid://d6eu6auofgw5" path="res://Sprites/Characters/Character_Knight.tres" id="2_v726c"]
 [ext_resource type="Script" uid="uid://dj7m0b5mnoe2a" path="res://Scripts/Character/player.gd" id="3_nyb65"]
 [ext_resource type="Script" uid="uid://d11yrst7bij23" path="res://Scripts/Character/character_visual.gd" id="4_824ie"]
+[ext_resource type="Script" uid="uid://cspooyochquop" path="res://Scripts/Character/enemy.gd" id="5_m4qw5"]
+[ext_resource type="Texture2D" uid="uid://delaw40asu4s2" path="res://Sprites/Characters/Character_Cyclops.tres" id="6_87uyu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v726c"]
 radius = 6.0
@@ -31,3 +33,16 @@ shape = SubResource("CapsuleShape2D_v726c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="Enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(47, -4)
+script = ExtResource("5_m4qw5")
+target = NodePath("../Player")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy" node_paths=PackedStringArray("character")]
+texture = ExtResource("6_87uyu")
+script = ExtResource("4_824ie")
+character = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CapsuleShape2D_v726c")

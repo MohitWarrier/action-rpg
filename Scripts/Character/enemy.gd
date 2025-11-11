@@ -1,0 +1,24 @@
+class_name Enemy
+extends Character
+
+@export var target: CharacterBody2D
+@export var stop_distance: int = 30
+
+var target_direction: Vector2
+var target_distance: float
+
+
+func _process(delta: float) -> void:
+	if not target:
+		return
+	
+	target_direction = global_position.direction_to(target.global_position)
+	target_distance = global_position.distance_to(target.global_position)
+	
+	look_direction = target_direction
+	
+	# stop moving once enemy has reached a certain distance to target
+	if target_distance > stop_distance:
+		move_input = target_direction
+	else:
+		move_input = Vector2.ZERO
