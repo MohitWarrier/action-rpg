@@ -19,7 +19,11 @@ func _physics_process(delta: float) -> void:
 	
 
 func take_damage(amount: int, force: Vector2) -> void:
-	pass
+	current_hp -= amount
+	add_force(force)
+	
+	if current_hp <= 0:
+		die()
 
 
 func die() -> void:

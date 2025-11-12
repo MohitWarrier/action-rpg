@@ -14,4 +14,14 @@ func use() -> void:
 
 
 func detect_hits() -> void:
-	pass
+	for body in hitbox.get_overlapping_bodies():
+		if body == owner_character:
+			continue
+		if body is not Character:
+			continue
+		
+		var direction: Vector2 = global_position.direction_to(body.global_position)
+		body.take_damage(damage, direction * hit_force)
+
+		
+		

@@ -36,6 +36,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(10, 0), Vector2(8, 0), Vector2(8, 0), Vector2(14, 0), Vector2(14, 0), Vector2(10, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"detect_hits"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4op41"]
 _data = {
@@ -45,7 +59,7 @@ _data = {
 
 [node name="Sword" type="Node2D"]
 script = ExtResource("1_v4uo3")
-damage = 1
+damage = 2
 hit_force = 100.0
 range = 30.0
 
