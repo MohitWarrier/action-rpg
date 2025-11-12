@@ -8,7 +8,7 @@ extends Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	character.damage_taken.connect(on_damage_taken)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,4 +23,9 @@ func _process(delta: float) -> void:
 	
 	rotation_degrees = lerpf(rotation_degrees, target_rotation, delta * 20)
 	
+
+func on_damage_taken(direction: Vector2) -> void:
+	modulate = Color.BLACK
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color.WHITE
 	

@@ -24,7 +24,9 @@ func take_damage(amount: int, force: Vector2) -> void:
 	
 	if current_hp <= 0:
 		die()
-
+	else:
+		damage_taken.emit(force)
+		health_changed.emit()
 
 func die() -> void:
 	pass
